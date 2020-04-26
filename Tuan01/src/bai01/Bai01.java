@@ -19,9 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Bai01 extends JFrame implements ActionListener {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JTextField txtA;
 	private JTextField txtB;
