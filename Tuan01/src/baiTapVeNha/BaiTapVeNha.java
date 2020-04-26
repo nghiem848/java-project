@@ -26,17 +26,25 @@ public class BaiTapVeNha extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	
 	
-	private JButton giai, xoa, thoat;
-	private JTextField a, b, kq;
-	private JRadioButton cong , tru, nhan, chia;
-	
+	private JButton btnGiai;
+	private JButton  btnXoa;
+	private JButton btnThoat;
+	private JTextField txtA;
+	private JTextField txtB;
+	private JTextField txtKq;
+	private JRadioButton rbnCong ;
+	private JRadioButton rbnTru;
+	private JRadioButton rbnNhan;
+	private JRadioButton rbnChia;
+
+
 	public BaiTapVeNha() {
 		this.setSize(600, 450);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 	
 		
-		JLabel title =new JLabel("Cộng Trừ Nhân Chia");
+		JLabel title =new JLabel("Cộng Trừ Nhân rbnChia");
 		title.setFont(new Font("arial", Font.BOLD, 25));
 		title.setHorizontalAlignment(JLabel.CENTER);
 		this.add(title, BorderLayout.NORTH);
@@ -44,19 +52,19 @@ public class BaiTapVeNha extends JFrame implements ActionListener{
 		
 		JPanel tacVu =new JPanel();
 		tacVu.setLayout(new FlowLayout());
-		giai=new JButton("Giải");
-		giai.addActionListener(this);
-		xoa=new JButton("Xóa");
-		xoa.addActionListener(this);
-		thoat=new  JButton("Thoát");
-		thoat.addActionListener(this);
-		giai.setPreferredSize(new Dimension(90,30));
-		xoa.setPreferredSize(new Dimension(90,30));
-		thoat.setPreferredSize(new Dimension(90,30));
+		btnGiai=new JButton("Giải");
+		btnGiai.addActionListener(this);
+		btnXoa=new JButton("Xóa");
+		btnXoa.addActionListener(this);
+		btnThoat=new  JButton("Thoát");
+		btnThoat.addActionListener(this);
+		btnGiai.setPreferredSize(new Dimension(90,30));
+		btnXoa.setPreferredSize(btnGiai.getPreferredSize());
+		btnThoat.setPreferredSize(btnGiai.getPreferredSize());
 
-		tacVu.add(giai);
-		tacVu.add(xoa);
-		tacVu.add(thoat);
+		tacVu.add(btnGiai);
+		tacVu.add(btnXoa);
+		tacVu.add(btnThoat);
 		tacVu.setBorder(BorderFactory.createTitledBorder("Chọn tác vụ"));
 		tacVu.setPreferredSize(new Dimension(120,0));
 		tacVu.setBackground(Color.gray);
@@ -78,18 +86,18 @@ public class BaiTapVeNha extends JFrame implements ActionListener{
 		
 		JPanel nhap = new JPanel();
 		nhap.add(new JLabel("Nhập a:"));
-		a= new JTextField();
-		a.setPreferredSize(new Dimension(250,30));
+		txtA= new JTextField();
+		txtA.setPreferredSize(new Dimension(250,30));
 		nhap.setBounds(40, 20, 350, 50);
-		nhap.add(a);
+		nhap.add(txtA);
 		center.add(nhap);
 		
 		nhap = new JPanel();
 		nhap.add(new JLabel("Nhập b:"));
-		b= new JTextField();
-		b.setPreferredSize(new Dimension(250,30));
+		txtB= new JTextField();
+		txtB.setPreferredSize(new Dimension(250,30));
 		nhap.setBounds(40, 70, 350, 50);
-		nhap.add(b);
+		nhap.add(txtB);
 		center.add(nhap);
 		
 		JPanel phepToan = new JPanel();
@@ -97,29 +105,29 @@ public class BaiTapVeNha extends JFrame implements ActionListener{
 		phepToan.setBounds(110,120, 250, 150);
 		phepToan.setLayout(new GridLayout(2, 2));
 		ButtonGroup btg= new ButtonGroup();
-		cong= new JRadioButton("Cộng", true);
-		btg.add(cong);
-		tru=new JRadioButton("Trừ");
-		btg.add(tru);
-		nhan=new JRadioButton("Nhân");
-		btg.add(nhan);
-		chia=new JRadioButton("Chia");
-		btg.add(chia);
-		phepToan.add(cong);
-		phepToan.add(tru);
-		phepToan.add(nhan);
-		phepToan.add(chia);
+		rbnCong= new JRadioButton("Cộng", true);
+		btg.add(rbnCong);
+		rbnTru=new JRadioButton("Trừ");
+		btg.add(rbnTru);
+		rbnNhan=new JRadioButton("Nhân");
+		btg.add(rbnNhan);
+		rbnChia=new JRadioButton("rbnChia");
+		btg.add(rbnChia);
+		phepToan.add(rbnCong);
+		phepToan.add(rbnTru);
+		phepToan.add(rbnNhan);
+		phepToan.add(rbnChia);
 
 		
 		center.add(phepToan);
 		
 		nhap = new JPanel();
 		nhap.add(new JLabel("Kết quả"));
-		kq= new JTextField();
-		kq.setPreferredSize(new Dimension(250,30));
-		kq.setEditable(false);
+		txtKq= new JTextField();
+		txtKq.setPreferredSize(new Dimension(250,30));
+		txtKq.setEditable(false);
 		nhap.setBounds(40, 280, 350, 50);
-		nhap.add(kq);
+		nhap.add(txtKq);
 		center.add(nhap);
 		
 		
@@ -131,29 +139,29 @@ public class BaiTapVeNha extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource()==xoa) {
-			this.a.setText("");
-			this.b.setText("");
-			this.kq.setText("");
+		if(e.getSource()==btnXoa) {
+			this.txtA.setText("");
+			this.txtB.setText("");
+			this.txtKq.setText("");
 		}
-		else if(e.getSource()==thoat)
+		else if(e.getSource()==btnThoat)
 			System.exit(0);
 		else {
 			String text_a, text_b;
-			text_a=this.a.getText();
-			text_b=this.b.getText();
+			text_a=this.txtA.getText();
+			text_b=this.txtB.getText();
 			try {
 				double var_a, var_b;
 				var_a =Double.parseDouble(text_a);
 				var_b =Double.parseDouble(text_b);
-				if (cong.isSelected())
-					kq.setText(""+(var_a+var_b));
-				else if(tru.isSelected())
-					kq.setText(""+(var_a-var_b));
-				else if(nhan.isSelected())
-					kq.setText(""+(var_a*var_b));
+				if (rbnCong.isSelected())
+					txtKq.setText(""+(var_a+var_b));
+				else if(rbnTru.isSelected())
+					txtKq.setText(""+(var_a-var_b));
+				else if(rbnNhan.isSelected())
+					txtKq.setText(""+(var_a*var_b));
 				else
-					kq.setText(""+(var_a/var_b));
+					txtKq.setText(""+(var_a/var_b));
 			} catch (Exception e2) {
 				// TODO: handle exception
 				JOptionPane.showMessageDialog(this, "Dữ liệu không hợp lệ");

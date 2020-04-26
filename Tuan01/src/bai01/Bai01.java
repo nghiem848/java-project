@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,8 +23,11 @@ public class Bai01 extends JFrame implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField a, b, c, kq;
-	private JButton giai, xoa, thoat;
+	private JTextField txtA;
+	private JTextField txtB;
+	private JTextField txtC;
+	private JTextField txtKq;
+	private JButton btnGiai, btnXoa, btnThoat;
 
 	public Bai01() {
 		this.setSize(600, 450);
@@ -44,53 +49,64 @@ public class Bai01 extends JFrame implements ActionListener {
 		JPanel nhap = new JPanel();
 		nhap.setLayout(null);
 		this.add(nhap, BorderLayout.CENTER);
+		nhap.setLayout(new BoxLayout(nhap, BoxLayout.Y_AXIS));
 
 		// nhap a
+		nhap.add(Box.createRigidArea(new Dimension(0,20)));
+		JPanel pla=new JPanel();
 		JLabel lba = new JLabel("Nhập a:");
-		lba.setBounds(40, 40, 50, 20);
-		a = new JTextField(15);
-		a.setBounds(150, 40, 350, 30);
-		nhap.add(lba);
-		nhap.add(a);
-
+		lba.setPreferredSize(new Dimension(100,30));
+		txtA = new JTextField(20);
+		txtA.setPreferredSize(new Dimension(100,30));
+		pla.add(lba);
+		pla.add(txtA);
+		nhap.add(pla);
+		
+		
 		// nhap b
+		JPanel plb=new JPanel();
 		JLabel lbb = new JLabel("Nhập b:");
-		lbb.setBounds(40, 100, 50, 20);
-		b = new JTextField(15);
-		b.setBounds(150, 100, 350, 30);
-		nhap.add(lbb);
-		nhap.add(b);
+		lbb.setPreferredSize(lba.getPreferredSize());
+		txtB = new JTextField(20);
+		txtB.setPreferredSize(txtA.getPreferredSize());
+		plb.add(lbb);
+		plb.add(txtB);
+		nhap.add(plb);
 
 		// nhap c
+		JPanel plc=new JPanel();
 		JLabel lbc = new JLabel("Nhập c:");
-		lbc.setBounds(40, 160, 50, 20);
-		c = new JTextField(15);
-		c.setBounds(150, 160, 350, 30);
-		nhap.add(lbc);
-		nhap.add(c);
+		lbc.setPreferredSize(lba.getPreferredSize());
+		txtC = new JTextField(20);
+		txtC.setPreferredSize(txtA.getPreferredSize());
+		plc.add(lbc);
+		plc.add(txtC);
+		nhap.add(plc);
 
 		// ket qua
+		JPanel plKq=new JPanel();
 		JLabel lbkq = new JLabel("Kết quả:");
-		lbkq.setBounds(40, 220, 50, 20);
-		kq = new JTextField(15);
-		kq.setBounds(150, 220, 350, 30);
-		kq.setEditable(false);
-		nhap.add(lbkq);
-		nhap.add(kq);
+		lbkq.setPreferredSize(lba.getPreferredSize());
+		txtKq = new JTextField(20);
+		txtKq.setEditable(false);
+		txtKq.setPreferredSize(txtA.getPreferredSize());
+		plKq.add(lbkq);
+		plKq.add(txtKq);
+		nhap.add(plKq);
 
 		// them button
 		JPanel tinh = new JPanel();
 		tinh.setBorder(BorderFactory.createTitledBorder("Chọn tác vụ"));
 		tinh.setLayout(new FlowLayout());
-		giai = new JButton("Giải");
-		xoa = new JButton("Xóa rỗng");
-		thoat = new JButton("Thoát");
-		giai.addActionListener(this);
-		xoa.addActionListener(this);
-		thoat.addActionListener(this);
-		tinh.add(giai);
-		tinh.add(xoa);
-		tinh.add(thoat);
+		btnGiai = new JButton("Giải");
+		btnXoa = new JButton("Xóa rỗng");
+		btnThoat = new JButton("Thoát");
+		btnGiai.addActionListener(this);
+		btnXoa.addActionListener(this);
+		btnThoat.addActionListener(this);
+		tinh.add(btnGiai);
+		tinh.add(btnXoa);
+		tinh.add(btnThoat);
 		tinh.setPreferredSize(new Dimension(0, 70));
 		this.add(tinh, BorderLayout.SOUTH);
 
@@ -104,18 +120,18 @@ public class Bai01 extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == thoat) {
+		if (e.getSource() == btnThoat) {
 			System.exit(0);
-		} else if (e.getSource() == xoa) {
-			this.a.setText("");
-			this.b.setText("");
-			this.c.setText("");
-			this.kq.setText("");
+		} else if (e.getSource() == btnXoa) {
+			this.txtA.setText("");
+			this.txtB.setText("");
+			this.txtC.setText("");
+			this.txtKq.setText("");
 		} else {
 			String text_a, text_b, text_c;
-			text_a = this.a.getText();
-			text_b = this.b.getText();
-			text_c = this.c.getText();
+			text_a = this.txtA.getText();
+			text_b = this.txtB.getText();
+			text_c = this.txtC.getText();
 			double var_a, var_b, var_c;
 			try {
 				var_a = Double.parseDouble(text_a);
@@ -123,13 +139,13 @@ public class Bai01 extends JFrame implements ActionListener {
 				var_c = Double.parseDouble(text_c);
 				ArrayList<Double> n = giaiPhuongTrinh2(var_a, var_b, var_c);
 				if (n.contains(null))
-					kq.setText("Vô nghiệm");
+					txtKq.setText("Vô nghiệm");
 				else {
 					if (n.size() == 1)
-						kq.setText("X = " + n.get(0));
+						txtKq.setText("X = " + n.get(0));
 
 					else
-						kq.setText("X1 = " + n.get(0) + "  X2 = " + n.get(1));
+						txtKq.setText("X1 = " + n.get(0) + "  X2 = " + n.get(1));
 				}
 			} catch (Exception e2) {
 				// TODO: handle exception
