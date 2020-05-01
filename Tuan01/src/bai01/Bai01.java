@@ -34,7 +34,7 @@ public class Bai01 extends JFrame implements ActionListener {
 		this.setResizable(false);
 
 		// Tieu de
-		JLabel title = new JLabel("GIẢI PHƯƠNG TRÌNH BẬC 2");
+		JLabel title = new JLabel("GIẢI PHƯƠNG TRÌNH BẬC 2 3");
 		title.setHorizontalAlignment(JLabel.CENTER);
 		title.setBackground(Color.gray);
 		title.setBounds(0, 0, 600, 50);
