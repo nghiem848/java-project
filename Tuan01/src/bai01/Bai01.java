@@ -43,7 +43,7 @@ public class Bai01 extends JFrame implements ActionListener {
 		title.setPreferredSize(new Dimension(0, 50));
 		this.add(title, BorderLayout.NORTH);
 
-		// them phan nhap
+		// them phan nhap 321
 		JPanel nhap = new JPanel();
 		nhap.setLayout(null);
 		this.add(nhap, BorderLayout.CENTER);
