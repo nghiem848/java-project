@@ -32,7 +32,7 @@ public class Bai01 extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
-		//123
+		//12
 		
 		
 		// Tieu de
