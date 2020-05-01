@@ -33,7 +33,7 @@ public class Bai01 extends JFrame implements ActionListener {
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		//12
-		
+		//123
 		
 		// Tieu de
 		JLabel title = new JLabel("GIẢI PHƯƠNG TRÌNH BẬC 2");
